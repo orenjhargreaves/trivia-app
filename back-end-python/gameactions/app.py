@@ -62,7 +62,7 @@ def send_broadcast(connections, data):
             if "action" in data and data["action"] == "playerlist":
                 # we need to insert "currentPlayer" into player list broadcasts
                 for player in data["players"]:
-                    player["currentPlayer"] = (connection==player["connectionId"])
+                    player["currentPlayer"] = connection==player["connectionId"]
 
             MANAGEMENT.post_to_connection(
                 Data=json.dumps(data),
